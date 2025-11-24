@@ -40,4 +40,10 @@ public class TodoService {
         }
         return new ApiRespDto<>("success", "조회 완료", foundTodo.get());
     }
+    public ApiRespDto<?>editTodo(Integer todoId){
+        Optional<Todo> foundTodo = todoRepository.findTodoByTodoId(todoId);
+        if (foundTodo.isEmpty()){
+            return new ApiRespDto<>("failed", "수정 실패",  null);
+        }
+    }
 }

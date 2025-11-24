@@ -1,6 +1,7 @@
 package com.korit.mybatis_study.Repository;
 
 import com.korit.mybatis_study.Entity.Todo;
+import com.korit.mybatis_study.Mapper.BoardMapper;
 import com.korit.mybatis_study.Mapper.TodoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -15,6 +16,8 @@ public class TodoRepository {
 
     @Autowired
     private TodoMapper todoMapper;
+    @Autowired
+    private BoardMapper boardMapper;
 
     public Optional<Todo> findByTitle(String title){
         return todoMapper.findByTitle(title);
@@ -36,6 +39,14 @@ public class TodoRepository {
 
     public Optional<Todo> findTodoByTodoId(Integer todoId){
         return todoMapper.findTodoByTodoId(todoId);
+    }
+
+    public int editTodo(Todo todo){
+        return todoMapper.editTodo(todo);
+    }
+
+    public int removeTodo(Integer todoId){
+        return todoMapper.removeTodo(todoId);
     }
 
 }
