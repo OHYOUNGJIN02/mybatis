@@ -41,4 +41,20 @@
         where
             todo_id = #{todoId};
     </select>
+    <update id="editTodo">
+        update
+            todo_tb
+        set
+            title = #{title},
+            content = #{content},
+            update_dt = now()
+        where
+            todo_id = #{todoId};
+    </update>
+    <delete id="removeTodo">
+        delete from
+            todo_tb
+        where
+            todo_id = #{todoId};
+    </delete>
 </mapper>
